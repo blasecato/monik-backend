@@ -61,7 +61,7 @@ export class ItemsController {
 
     //metodo delete Actualizar un registro
     @Put(':id')
-    update(@Body() updateItemDto:CreateItemDto, @Param('id') id): string{
+    update(@Body() updateItemDto:CreateItemDto, @Param('id') id: string){
         return `Actualizando item ${id} - Name ${updateItemDto.name}`;
     }
 }
