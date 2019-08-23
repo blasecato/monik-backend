@@ -1,6 +1,7 @@
 import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
+import {User} from "../../usuario/dto/usuario.entity";
 
-@Entity('rol',{schema:"monicanela" } )
+@Entity('cargo',{schema:"monicanela" } )
 export class Rol {
   @PrimaryGeneratedColumn({
     type:"int", 
@@ -13,6 +14,9 @@ export class Rol {
     length:100,
     name:"nombre"
     })
-nombre:string;
+  nombre:string;
+
+  @OneToMany(type => User, user => user.id_cargo) // note: we will create author property in the Photo class below
+    id_cargo: User[];
 
 }

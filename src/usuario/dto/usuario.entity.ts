@@ -1,11 +1,12 @@
 import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
-import {Genero} from "./genero.entity";
-import {Rol} from "./rol.entity";
+import {Genero} from "../../genero/dto/genero.entity";
+import {Rol} from "../../rol/dto/rol.entity";
 
 @Entity('usuario',{schema:"monicanela" } )
-@Index("id_rol",["id_rol",])
-@Index("id_genero",["id_genero",])
-export class Usuario {
+@Index("fk_genero",["id_genero",])
+@Index("fk_cargo",["id_cargo",])
+export class User {
+
   @PrimaryGeneratedColumn({
     type:"int", 
     name:"id"
@@ -13,7 +14,6 @@ export class Usuario {
   id: number;
 
   @Column({ 
-    nullable:false,
     type:"int",
     name:"dni"
     })
@@ -24,7 +24,7 @@ export class Usuario {
     length:100,
     name:"nombres"
     })
-    nombre:string;
+    nombres:string;
 
     @Column("varchar",{ 
         nullable:false,
@@ -32,6 +32,12 @@ export class Usuario {
         name:"apeliidos"
         })
     apeliidos:string;
+
+    @Column({ 
+        type:"date",
+        name:"fecha_registro"
+        })
+      fecha_registro:Date;
 
     @Column("varchar",{ 
         nullable:false,
@@ -48,11 +54,10 @@ export class Usuario {
     contrasenia:string;
 
     @Column({ 
-        nullable:false,
         type:"int",
-        name:"telefono"
+        name:"telefoto"
         })
-    telefono:number;
+    telefoto:number;
 
     @Column("varchar",{ 
         nullable:false,
@@ -68,13 +73,13 @@ export class Usuario {
         })
     direccion:string;
 
-    @ManyToOne(type=>Rol, Rol=>Rol.id,{  nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
-    @JoinColumn({ name:'fk_user'})
-    id_rol:Rol | null;
+    @ManyToOne(type => Genero, genero => genero.id_genero,{ onDelete: 'SET NULL',onUpdate: 'SET NULL' })
+    @JoinColumn({ name:'id_genero'})
+    id_genero:  Genero | null;
 
+    @ManyToOne(type => Rol, rol => rol.id_cargo,{ onDelete: 'SET NULL',onUpdate: 'SET NULL' })
+    @JoinColumn({ name:'id_cargo'})
+    id_cargo:  Rol| null;
 
-   
-    @ManyToOne(type=>Genero, Genero=>Genero.id,{  nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
-    @JoinColumn({ name:'fk_rol'})
-    id_genero:Genero | null;
+    
 }

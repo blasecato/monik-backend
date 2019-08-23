@@ -13,6 +13,6 @@ export class Genero {
     length:100,
     name:"nombre"
     })
-nombre:string;
+  nombre:string;
 
 }

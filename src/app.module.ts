@@ -8,9 +8,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { Genero } from './genero/dto/genero.entity';
 import { GeneroModule } from './genero/genero.module';
+import { UsuarioController } from './usuario/usuario.controller';
+import { UsuarioService } from './usuario/usuario.service';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
-  imports: [ItemsModule,TypeOrmModule.forRoot({
+  imports: [TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -19,8 +22,8 @@ import { GeneroModule } from './genero/genero.module';
     database: 'monicanela',
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true,
-  }), GeneroModule,],
-  controllers: [AppController, ItemsController],
+  }), GeneroModule,UsuarioModule],
+  controllers: [AppController, ItemsController], 
   providers: [AppService, ItemsService],
 })
 export class AppModule {}
