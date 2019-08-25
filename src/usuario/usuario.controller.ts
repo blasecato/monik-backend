@@ -12,7 +12,7 @@ export class UsuarioController {
     constructor(private readonly userService: UsuarioService){}
 
     //sirve
-    @Get()
+    @Get('cuser')
     findAll(): Promise<User[]>{
          return this.userService.findAll();
     }
