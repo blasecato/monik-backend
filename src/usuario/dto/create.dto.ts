@@ -1,8 +1,6 @@
 import { IsInt, IsNotEmpty, Length, IsPositive, IsNumber } from 'class-validator';
 
 export class CreateDto {
-    @Length(5, 100)
-    id: number;
 
     @Length(5, 100)
     dni: number;
@@ -31,6 +29,4 @@ export class CreateDto {
     @Length(5, 100)
     id_genero: number;
 
-    @Length(5, 100)
-    id_cargo: number;
 }

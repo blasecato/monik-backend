@@ -1,7 +1,7 @@
 import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
-import {Empleado} from "./empleado.entity";
-import {Proveedor} from "./proveedor.entity";
-import {Pedido} from "./pedido.entity";
+import {Empleado} from "../../empleado/dto/empleado.entity";
+import {Proveedor} from "../../proveedor/dto/proveedor.entity";
+import {Pedido} from "../../pedido/dto/pedido.entity";
 
 @Entity('usuario',{schema:"monicanela" } )
 @Index("fk_empleado",["id_emp",])

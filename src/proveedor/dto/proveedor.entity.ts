@@ -1,5 +1,5 @@
 import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
-import {Producto } from "./producto.entity";
+import {Producto } from "../../producto/dto/producto.entity";
 
 @Entity('proveedor',{schema:"monicanela" } )
 export class Proveedor {

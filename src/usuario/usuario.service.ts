@@ -18,4 +18,13 @@ export class UsuarioService {
     create(usuario) {
         return this.userRepository.save({ ...usuario, fecha_registro: new Date() });
     }
+
+    createuser(usuario) {
+        return this.userRepository.createQueryBuilder()
+        .insert()
+        .into(User)
+        .values(usuario)
+        .execute();
+    }
+
 }

@@ -1,7 +1,7 @@
 import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
 import {Genero} from "../../genero/dto/genero.entity";
 import {Rol} from "../../rol/dto/rol.entity";
-import { Factura } from "../../../entitys/factura.entity";
+import { Factura } from "../../factura/dto/factura.entity";
 
 @Entity('usuario',{schema:"monicanela" } )
 @Index("fk_genero",["id_genero",])
@@ -9,13 +9,13 @@ import { Factura } from "../../../entitys/factura.entity";
 export class User {
 
   @PrimaryGeneratedColumn({
-    type:"int", 
+    type:"bigint", 
     name:"id"
   })
-  id: number;
+  id: string;
 
   @Column({ 
-    type:"int",
+    type:"bigint",
     name:"dni"
     })
     dni:number;
@@ -78,9 +78,9 @@ export class User {
     @JoinColumn({ name:'id_genero'})
     id_genero:  Genero | null;
 
-    @ManyToOne(type => Rol, rol => rol.id_cargo,{ onDelete: 'SET NULL',onUpdate: 'SET NULL' })
+    @ManyToOne( type => Rol, rol => rol.id_cargo,{ onDelete: 'CASCADE',onUpdate: 'CASCADE' })
     @JoinColumn({ name:'id_cargo'})
-    id_cargo:  Rol| null;
+    id_cargo:  Rol;
 
     @OneToMany(type => Factura, factura => factura.id_usu,{ onDelete: 'SET NULL' ,onUpdate: 'SET NULL' }) // note: we will create author property in the Photo class below
     id_usu: User[];

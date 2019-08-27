@@ -12,12 +12,12 @@ export class UsuarioController {
     constructor(private readonly userService: UsuarioService){}
 
     //sirve
-    @Get('cuser')
+    @Get()
     findAll(): Promise<User[]>{
          return this.userService.findAll();
     }
 
-    @Post('create')
+    @Post()
     create(@Body() body: CreateDto) {
         console.log(body);
         return this.userService.create(body);

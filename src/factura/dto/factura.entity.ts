@@ -1,6 +1,6 @@
 import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
-import {User} from "../src/usuario/dto/usuario.entity";
-import { Pedido } from "./pedido.entity";
+import {User} from "../../usuario/dto/usuario.entity";
+import { Pedido } from "../../pedido/dto/pedido.entity";
 
 @Entity('factura',{schema:"monicanela" } )
 export class Factura {

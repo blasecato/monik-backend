@@ -12,11 +12,12 @@ export class Rol {
   @Column("varchar",{ 
     nullable:false,
     length:100,
-    name:"nombre"
+    name:"nombre",
+    default:"1"
     })
   nombre:string;
 
-  @OneToMany(type => User, user => user.id_cargo) // note: we will create author property in the Photo class below
+  @OneToMany(type => User, user => user.id_cargo,{ onDelete: 'CASCADE',onUpdate: 'CASCADE' }) // note: we will create author property in the Photo class below
     id_cargo: User[];
 
 }
