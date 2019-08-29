@@ -3,7 +3,7 @@ import {Empleado} from "../../empleado/dto/empleado.entity";
 import {Proveedor} from "../../proveedor/dto/proveedor.entity";
 import {Pedido} from "../../pedido/dto/pedido.entity";
 
-@Entity('usuario',{schema:"monicanela" } )
+@Entity('producto',{schema:"monicanela" } )
 @Index("fk_empleado",["id_emp",])
 @Index("fk_proveedor",["id_prov",])
 export class Producto {
@@ -19,7 +19,7 @@ export class Producto {
     length:100,
     name:"nombre"
     })
-    nombres:string;
+    nombre:string;
 
     @Column({
         type:"int", 

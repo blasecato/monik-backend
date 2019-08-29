@@ -20,7 +20,7 @@ export class Empleado {
     @JoinColumn({ name:'id_usu'})
     id_usu:  User | null;
 
-    @ManyToOne(type => Rol, rol => rol.id_cargo,{ onDelete: 'SET NULL',onUpdate: 'SET NULL' })
+    @ManyToOne(type => Rol, rol => rol.id_carg,{ onDelete: 'SET NULL',onUpdate: 'SET NULL' })
     @JoinColumn({ name:'id_cargo'})
     id_cargo:  Rol| null;
 

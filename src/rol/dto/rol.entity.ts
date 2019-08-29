@@ -1,5 +1,6 @@
 import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
 import {User} from "../../usuario/dto/usuario.entity";
+import {Empleado} from "../../empleado/dto/empleado.entity";
 
 @Entity('cargo',{schema:"monicanela" } )
 export class Rol {
@@ -19,5 +20,8 @@ export class Rol {
 
   @OneToMany(type => User, user => user.id_cargo,{ onDelete: 'CASCADE',onUpdate: 'CASCADE' }) // note: we will create author property in the Photo class below
     id_cargo: User[];
+
+  @OneToMany(type => Empleado, empleado => empleado.id_cargo,{ onDelete: 'CASCADE',onUpdate: 'CASCADE' }) // note: we will create author property in the Photo class below
+    id_carg: User[];
 
 }

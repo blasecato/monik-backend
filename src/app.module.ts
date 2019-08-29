@@ -11,6 +11,17 @@ import { GeneroModule } from './genero/genero.module';
 import { UsuarioController } from './usuario/usuario.controller';
 import { UsuarioService } from './usuario/usuario.service';
 import { UsuarioModule } from './usuario/usuario.module';
+import { EmpleadoController } from './empleado/empleado.controller';
+import { EmpleadoService } from './empleado/empleado.service';
+import { EmpleadoModule } from './empleado/empleado.module';
+import { PedidoModule } from './pedido/pedido.module';
+import { FacturaController } from './factura/factura.controller';
+import { FacturaService } from './factura/factura.service';
+import { FacturaModule } from './factura/factura.module';
+import { ProveedorModule } from './proveedor/proveedor.module';
+import { ProductoService } from './producto/producto.service';
+import { ProductoController } from './producto/producto.controller';
+import { ProductoModule } from './producto/producto.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -22,8 +33,8 @@ import { UsuarioModule } from './usuario/usuario.module';
     database: 'monicanela',
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true,
-  }), GeneroModule,UsuarioModule],
-  controllers: [AppController, ItemsController], 
-  providers: [AppService, ItemsService],
+  }), GeneroModule,UsuarioModule, EmpleadoModule, PedidoModule, FacturaModule, ProveedorModule, ProductoModule],
+  controllers: [AppController], 
+  providers: [AppService],
 })
 export class AppModule {}

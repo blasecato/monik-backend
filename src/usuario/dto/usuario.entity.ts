@@ -80,7 +80,7 @@ export class User {
 
     @ManyToOne( type => Rol, rol => rol.id_cargo,{ onDelete: 'CASCADE',onUpdate: 'CASCADE' })
     @JoinColumn({ name:'id_cargo'})
-    id_cargo:  Rol;
+    id_cargo:  Rol; 
 
     @OneToMany(type => Factura, factura => factura.id_usu,{ onDelete: 'SET NULL' ,onUpdate: 'SET NULL' }) // note: we will create author property in the Photo class below
     id_usu: User[];

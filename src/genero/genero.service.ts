@@ -39,11 +39,7 @@ export class GeneroService {
     .execute();
   }
   
-  update(id,nombre) {
-    return this.generoRepository.createQueryBuilder()
-    .update(Genero)
-    .set({ nombre: nombre})
-    .where("id = :ids", { ids: id })
-    .execute();
-  }
+  // async update(id, Genero): Promise<Genero>{
+  //    return await this.generoRepository.update(id , Genero);
+  // }
 }

@@ -12,9 +12,9 @@ export class Proveedor {
     @Column("varchar",{ 
         nullable:false,
         length:100,
-        name:"nombres"
+        name:"nombre"
         })
-    nombres:string;
+    nombre:string;
 
     @Column({ 
         type:"int",

@@ -1,15 +1,4 @@
-import { 
-    Controller,
-    Get,
-    Post,
-    Put,
-    Delete,
-    Body,
-    Param,
-    UseGuards,
-    Request 
-    //Res 
-} from '@nestjs/common';
+import {  Controller,Get,Post,Put,Delete,Body,Param, UseGuards, Request } from '@nestjs/common';
 import { CreateDto } from './dto/create.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from '../common/guards/roles.guard';import {GeneroService } from "./genero.service";
@@ -58,7 +47,7 @@ export class GeneroController {
     @Put(':id')
     update(@Param('id') id: string,@Body() updateGeneroDto:CreateDto){
         console.log(updateGeneroDto);
-        return this.generoService.update(id,updateGeneroDto); 
+       // return this.generoService.update(id,updateGeneroDto); 
     }
 
 }
