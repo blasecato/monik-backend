@@ -2,6 +2,7 @@ import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne
 import {Genero} from "../../genero/dto/genero.entity";
 import {Rol} from "../../rol/dto/rol.entity";
 import { Factura } from "../../factura/dto/factura.entity";
+import { Empleado } from "src/empleado/dto/empleado.entity";
 
 @Entity('usuario',{schema:"monicanela" } )
 @Index("fk_genero",["id_genero",])
@@ -84,6 +85,9 @@ export class User {
 
     @OneToMany(type => Factura, factura => factura.id_usu,{ onDelete: 'SET NULL' ,onUpdate: 'SET NULL' }) // note: we will create author property in the Photo class below
     id_usu: User[];
+
+    @OneToMany(type => Empleado, empleado => empleado.id_usu,{ onDelete: 'SET NULL' ,onUpdate: 'SET NULL' }) // note: we will create author property in the Photo class below
+    id_u: User[];
 
     
 }

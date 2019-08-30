@@ -22,6 +22,6 @@ export class Rol {
     id_cargo: User[];
 
   @OneToMany(type => Empleado, empleado => empleado.id_cargo,{ onDelete: 'CASCADE',onUpdate: 'CASCADE' }) // note: we will create author property in the Photo class below
-    id_carg: User[];
+    id_carg: Empleado[];
 
 }

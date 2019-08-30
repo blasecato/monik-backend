@@ -21,14 +21,14 @@ export class PedidoService {
       //consulta a la bd el pedido cuyo id == id
       //falta inner join
       getById(id) {
-        return this.pedidoRepository.createQueryBuilder()
-        .select("id", "pedido_Id#")
-        .addSelect("cant", "cant_pedida")
+        return this.pedidoRepository.createQueryBuilder("pedido")
+        .select("pedido.id", "pedido_Id#")
+        .addSelect("pedido.cant", "cant_pedida")
         .addSelect("total", "total_pedido")
-        .addSelect("id_emp", "empleado")
-        .addSelect("id_pro", "producto")
-        .addSelect("id_fac", "factura")
-        .where("id = :ids", { ids: id })
+        .innerJoinAndSelect("pedido.id_emp","Empleado")
+        .innerJoinAndSelect("pedido.id_pro","Producto")
+        .innerJoinAndSelect("pedido.id_fac","Factura")
+        .where("pedido.id = :ids", { ids: id })
         .execute();
       }
 }

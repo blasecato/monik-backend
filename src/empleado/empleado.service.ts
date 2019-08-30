@@ -16,14 +16,15 @@ export class EmpleadoService {
         return await this.empleadoRepository.find();
       }
 
-      //consulta a la bd de el empleado cuyo id == id
-      //falta inner join
+      //consulta a la bd de el empleado cuyo id == i     
       getById(id) {
-        return this.empleadoRepository.createQueryBuilder()
-        .select("id", "empleado_Id")
-        .addSelect("id_usu", "id_usuario")
-        .addSelect("id_cargo", "id_cargo")
-        .where("id = :ids", { ids: id })
+        return this.empleadoRepository.createQueryBuilder("empleado")
+        .select("empleado.id", "empleado_Id")
+        .innerJoinAndSelect("empleado.id_usu","User")
+        .innerJoinAndSelect("empleado.id_cargo","Rol")
+        .where("empleado.id = :ids", { ids: id })
         .execute();
-      }
+      } 
+
+
 }

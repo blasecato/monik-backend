@@ -17,6 +17,12 @@ export class UsuarioController {
          return this.userService.findAll();
     }
 
+    //sirve
+    @Get(':id')
+    findOne(@Param('id') id):Promise<User>{
+        return this.userService.getById(id);
+    }
+
     @Post()
     create(@Body() body: CreateDto) {
         console.log(body);

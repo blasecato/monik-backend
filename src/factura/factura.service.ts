@@ -19,14 +19,14 @@ export class FacturaService {
         }
 
       //consulta a la bd la factura cuyo id == id
-      //falta inner join
       getById(id) {
-        return this.facturaRepository.createQueryBuilder()
-        .select("id", "factura_Id#")
+        return this.facturaRepository.createQueryBuilder("factura")
+        .select("factura.id", "factura_Id#")
         .addSelect("total_f", "total_de_la_factura")
         .addSelect("fecha", "fecha_de_la_factura")
         .addSelect("id_usu", "usuiario")
-        .where("id = :ids", { ids: id })
+        .innerJoinAndSelect("factura.id_usu","User")
+        .where("factura.id = :ids", { ids: id })
         .execute();
       }
 }

@@ -20,17 +20,18 @@ export class ProductoService {
       //consulta a la bd el producto cuyo id == id
       //falta inner join
       getById(id) {
-        return this.productoRepository.createQueryBuilder()
-        .select("id", "producto_Id#")
-        .addSelect("nombre", "nombre_producto")
+        return this.productoRepository.createQueryBuilder("producto")
+        .select("producto.id", "producto_Id#")
+        .addSelect("producto.nombre", "nombre_producto")
         .addSelect("precio_c", "precio_campra")
         .addSelect("precio_v", "precio_venta")
         .addSelect("fecha_c", "fecha_compra")
         .addSelect("id_prov", "proveedor")
         .addSelect("image", "foto_url")
         .addSelect("cant_comprada", "cantidad_comprada")
-        .addSelect("id_emp", "empleado_compro")
-        .where("id = :ids", { ids: id })
+        .innerJoinAndSelect("producto.id_emp","Empleado")
+        .innerJoinAndSelect("producto.id_prov","Proveedor")
+        .where("producto.id = :ids", { ids: id })
         .execute();
       }
 }
