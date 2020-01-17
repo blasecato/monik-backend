@@ -21,4 +21,10 @@ export class EmpleadoController {
     findOne(@Param('id') id): Promise<Empleado>{
         return this.empleadoService.getById(id); 
     }
+
+    //Sirve
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.empleadoService.delete(id);
+    }
 }

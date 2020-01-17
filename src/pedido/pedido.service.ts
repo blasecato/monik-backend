@@ -31,4 +31,12 @@ export class PedidoService {
         .where("pedido.id = :ids", { ids: id })
         .execute();
       }
+
+      delete(id) {
+        return this.pedidoRepository.createQueryBuilder()
+        .delete()
+        .from(Pedido)
+        .where("id = :ids", { ids: id })
+        .execute();
+      }
 }

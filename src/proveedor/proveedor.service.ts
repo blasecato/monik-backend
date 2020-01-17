@@ -28,4 +28,12 @@ export class ProveedorService {
         .where("id = :ids", { ids: id })
         .execute();
       }
+
+      delete(id) {
+        return this.proveedorRepository.createQueryBuilder()
+        .delete()
+        .from(Proveedor)
+        .where("id = :ids", { ids: id })
+        .execute();
+      }
 }

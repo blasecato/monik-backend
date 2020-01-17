@@ -21,4 +21,10 @@ export class ProveedorController {
     findOne(@Param('id') id):Promise<Proveedor>{
         return this.proveedorService.getById(id);
     }
+
+    //Sirve
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.proveedorService.delete(id);
+    }
 }

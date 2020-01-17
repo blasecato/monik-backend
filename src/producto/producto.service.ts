@@ -34,4 +34,12 @@ export class ProductoService {
         .where("producto.id = :ids", { ids: id })
         .execute();
       }
+
+      delete(id) {
+        return this.productoRepository.createQueryBuilder()
+        .delete()
+        .from(Producto)
+        .where("id = :ids", { ids: id })
+        .execute();
+      }
 }

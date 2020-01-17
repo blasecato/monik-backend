@@ -21,4 +21,10 @@ export class ProductoController {
     findOne(@Param('id') id):Promise<Producto>{
         return this.productoService.getById(id);
     }
+
+    //Sirve
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.productoService.delete(id);
+    }
 }

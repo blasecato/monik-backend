@@ -26,5 +26,13 @@ export class EmpleadoService {
         .execute();
       } 
 
+      delete(id) {
+        return this.empleadoRepository.createQueryBuilder()
+        .delete()
+        .from(Empleado)
+        .where("id = :ids", { ids: id })
+        .execute();
+      }
+
 
 }

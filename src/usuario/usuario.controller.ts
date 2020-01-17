@@ -28,4 +28,10 @@ export class UsuarioController {
         console.log(body);
         return this.userService.create(body);
     }
+
+    //Sirve
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.userService.delete(id);
+    }
 }

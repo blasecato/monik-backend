@@ -29,4 +29,12 @@ export class FacturaService {
         .where("factura.id = :ids", { ids: id })
         .execute();
       }
+
+      delete(id) {
+        return this.facturaRepository.createQueryBuilder()
+        .delete()
+        .from(Factura)
+        .where("id = :ids", { ids: id })
+        .execute();
+      }
 }

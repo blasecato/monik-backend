@@ -22,4 +22,10 @@ export class FacturaController {
         return this.facturaService.getById(id);
     }
 
+    //Sirve
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.facturaService.delete(id);
+    }
+
 }

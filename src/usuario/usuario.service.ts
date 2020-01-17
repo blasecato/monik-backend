@@ -38,4 +38,12 @@ export class UsuarioService {
         .execute();
     }
 
+    delete(id) {
+        return this.userRepository.createQueryBuilder()
+        .delete()
+        .from(User)
+        .where("id = :ids", { ids: id })
+        .execute();
+    }
+
 }

@@ -21,4 +21,10 @@ export class PedidoController {
     findOne(@Param('id') id):Promise<Pedido>{
         return this.pedidoService.getById(id);
     }
+
+    //Sirve
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.pedidoService.delete(id);
+    }
 }
